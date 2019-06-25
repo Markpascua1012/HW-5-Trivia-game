@@ -11,6 +11,23 @@
     background-color: #FFFF99 ;
 }
 
+h1 {
+    font-family: 'Special Elite', cursive;
+    color: red
+    
+    
+}
+
+p {
+    font-family: 'Nanum Myeongjo', serif;
+    color: red;
+}
+
+.form-check-label{
+    font-family: 'Nanum Myeongjo', serif;
+
+}
+
 .question{
     text-align: center;
 
@@ -28,8 +45,35 @@
 .timer{
     position: fixed;
     background-color:black;
-    color: red;
+    color: greenyellow;
     margin-top: -25px;
     font-size: 50px;
     
+}
+
+@media screen and (max-width: 375px) {
+
+    .card {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .jumbotron {
+        margin-top: 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height :650px;
+    }
+
+    .gif {
+        width: 320px;
+    }
+
+    h1{
+        font-size: 50px !important;
+    }
+
+ 
+
+
 }
