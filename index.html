@@ -261,8 +261,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input famous" type="radio" name="famous" id="Seth Rogan"
-                    value="Seth Rogan">
+                <input class="form-check-input famous" type="radio" name="famous" id="Seth Rogan" value="Seth Rogan">
                 <label class="form-check-label" for="Seth Rogan">
                     Seth Rogan
                 </label>
@@ -302,6 +301,7 @@
     <script>
 
         var audio = new Audio("Officetheme.mp3");
+        var audio2 = new Audio("officeNo");
 
         var time;
         var intervalId;
@@ -320,6 +320,7 @@
             $timer.text(currentTime);
             if (time === 0) {
                 clearInterval(intervalId);
+
                 window.location.reload(true);
                 window.location = ("#top");
             }
@@ -368,6 +369,7 @@
 
 
 
+
             var MSMname = $(".MSMname:checked").val();
             console.log(MSMname);
             if (MSMname === "Gary") {
@@ -375,7 +377,7 @@
             };
             if (MSMname !== "Gary") {
                 answersWrong++
-            }
+            };
 
 
             var fired = $(".fired:checked").val();
@@ -385,7 +387,7 @@
             };
             if (fired !== "Devon") {
                 answersWrong++
-            }
+            };
 
 
 
@@ -396,7 +398,7 @@
             };
             if (erinName !== "Kelly") {
                 answersWrong++
-            }
+            };
 
 
             var bGame = $(".bGame:checked").val();
@@ -406,7 +408,7 @@
             };
             if (bGame !== "Dallas") {
                 answersWrong++
-            }
+            };
 
 
             var dBrother = $(".dBrother:checked").val();
@@ -416,7 +418,7 @@
             };
             if (dBrother !== "Jeb") {
                 answersWrong++
-            }
+            };
 
             var mJob = $(".mJob:checked").val();
             console.log(mJob)
@@ -425,7 +427,7 @@
             };
             if (mJob !== "Telemarketer") {
                 answersWrong++
-            }
+            };
 
             var angelaCat = $(".angelaCat:checked").val();
             console.log(angelaCat)
@@ -434,7 +436,7 @@
             };
             if (angelaCat !== "Sprinkles") {
                 answersWrong++
-            }
+            };
 
             var famous = $(".famous:checked").val();
             console.log(famous)
@@ -443,15 +445,17 @@
             };
             if (famous !== "Seth Rogan") {
                 answersWrong++
-            }
+            };
 
 
 
-            alert("Correct: " + answersCorrect)
-            alert("wrong: " + answersWrong)
-            alert("please try again! :)")
-            console.log(answersCorrect)
-            console.log(answersWrong)
+            alert("Correct: " + answersCorrect);
+            alert("wrong: " + answersWrong);
+            alert("please try again! :)");
+            console.log(answersCorrect);
+            console.log(answersWrong);
+            window.location.reload(true);
+            window.location = ("#top");
 
         })
 
