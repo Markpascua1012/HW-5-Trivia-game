@@ -13,16 +13,23 @@
 
 <body background="assets/images/giphy.gif">
 
+    <div class="top"></div>
 
+    <div class="timer">00:00</div>
+
+    </div>
     <div class="jumbotron center titleCard">
         <h1 class="display-4">"The Office" Trivia Game</h1>
-        <p class="lead">Do you know "The Office?"</p>
+        <p class="lead">Do you know "The Office?" </p>
+        <img src="assets/images/200 (1).gif">
         <hr class="my-4">
+        <p>Click "Start" to start the timer, When the theme song ends, your time is up!</p>
         <p>Answer the questions within the time limit to test your knowledge!</p>
+
         <button id="start" type="button" class="btn btn-primary">Start</button>
     </div>
 
-    
+
 
     <div class="card">
         <div class="card-body">
@@ -177,13 +184,107 @@
     <br>
 
     <div class="card">
+        <div class="card-body">
+
+
+            <p class="question"> What second job does Michael get when he's low on cash?</p>
+            <div class="form-check">
+                <input class="form-check-input mJob" type="radio" name="mJob" id="Telemarketer" value="Telemarketer">
+                <label class="form-check-label" for="Telemarketer">
+                    Telemarketer
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input mJob" type="radio" name="mJob" id="ownCompany" value="ownCompany">
+                <label class="form-check-label" for="ownCompany">
+                    He starts his own company
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input mJob" type="radio" name="mJob" id="Staples" value="Staples">
+                <label class="form-check-label" for="Staples">
+                    Staples
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <p class="question"> What is the name of Angela's cat that Dwight kills?</p>
+            <div class="form-check">
+                <input class="form-check-input angelaCat" type="radio" name="angelaCat" id="Bandit" value="Bandit">
+                <label class="form-check-label" for="Bandit">
+                    Bandit
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input angelaCat" type="radio" name="angelaCat" id="Comstock" value="Comstock">
+                <label class="form-check-label" for="Comstock">
+                    Comstock
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input angelaCat" type="radio" name="angelaCat" id="Sprinkles"
+                    value="Sprinkles">
+                <label class="form-check-label" for="Sprinkles">
+                    Sprinkles
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <br>
+    <div class="card">
+        <div class="card-body">
+
+
+            <p class="question"> Which of these famous actors did not appear in "The Office?</p>
+            <div class="form-check">
+                <input class="form-check-input famous" type="radio" name="famous" id="Will Ferral" value="Will Ferral">
+                <label class="form-check-label" for="Will Ferral">
+                    Will Ferral
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input famous" type="radio" name="famous" id="Jim Carrey" value="Jim Carrey">
+                <label class="form-check-label" for="Jim Carrey">
+                    Jim Carrey
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input famous" type="radio" name="famous" id="Seth Rogan"
+                    value="Seth Rogan">
+                <label class="form-check-label" for="Seth Rogan">
+                    Seth Rogan
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <br>
+
+
+
+    <div class="card">
 
         <button type="submit" class="btn btn-primary">Submit Answers</button>
         </form>
-        <br>
-
         <div id="Correct"></div>
         <div id="wrong"></div>
+
+
+
 
     </div>
     </div>
@@ -202,6 +303,50 @@
 
         var audio = new Audio("Officetheme.mp3");
 
+        var time;
+        var intervalId;
+        var clockRunning;
+        var $timer = $(".timer");
+        function start() {
+            time = 32;
+            var currentTime = timeConverter(time);
+            $timer.text(currentTime);
+            intervalId = setInterval(countDown, 1000);
+
+        }
+        function countDown() {
+            time--;
+            var currentTime = timeConverter(time);
+            $timer.text(currentTime);
+            if (time === 0) {
+                clearInterval(intervalId);
+                window.location.reload(true);
+                window.location = ("#top");
+            }
+        }
+
+        function timeConverter(t) {
+
+
+            var minutes = Math.floor(t / 60);
+            var seconds = t - (minutes * 60);
+
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            if (minutes === 0) {
+                minutes = "00";
+            }
+
+            else if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            return minutes + ":" + seconds;
+        }
+
+
 
         var answersCorrect = 0;
         var answersWrong = 0;
@@ -209,8 +354,9 @@
         $("#start").click(function () {
             audio.play();
             window.location = ("#trivia");
+            start();
 
-          
+
 
 
         })
@@ -272,13 +418,44 @@
                 answersWrong++
             }
 
+            var mJob = $(".mJob:checked").val();
+            console.log(mJob)
+            if (mJob === "Telemarketer") {
+                answersCorrect++;
+            };
+            if (mJob !== "Telemarketer") {
+                answersWrong++
+            }
 
-            $("#Correct").text("Correct" + answersCorrect)
-            $("#Wrong").text("wrong" + answersWrong)
+            var angelaCat = $(".angelaCat:checked").val();
+            console.log(angelaCat)
+            if (angelaCat === "Sprinkles") {
+                answersCorrect++;
+            };
+            if (angelaCat !== "Sprinkles") {
+                answersWrong++
+            }
+
+            var famous = $(".famous:checked").val();
+            console.log(famous)
+            if (famous === "Seth Rogan") {
+                answersCorrect++;
+            };
+            if (famous !== "Seth Rogan") {
+                answersWrong++
+            }
+
+
+
+            alert("Correct: " + answersCorrect)
+            alert("wrong: " + answersWrong)
+            alert("please try again! :)")
             console.log(answersCorrect)
             console.log(answersWrong)
 
         })
+
+
 
 
 

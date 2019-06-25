@@ -3,10 +3,11 @@
 }
 
 .jumbotron{
-    margin-top: 100px;
+    margin-top: 25px;
     margin-bottom :50px;
     margin-left: 250px;
     margin-right: 250px;
+    height: 600px;
     background-color: #FFFF99 ;
 }
 
@@ -22,4 +23,13 @@
     margin-left: 250px;
     margin-right: 250px;
     background-color: #FFFF99 ;
+}
+
+.timer{
+    position: fixed;
+    background-color:black;
+    color: red;
+    margin-top: -25px;
+    font-size: 50px;
+    
 }
